@@ -69,20 +69,20 @@ Custom property | Description | Default
         particlesJS('particles-js', {
           "particles": {
             "number": {
-              "value": 200,
+              "value": this.particleCount,
               "density": {
                 "enable": true,
                 "value_area": 800
               }
             },
             "color": {
-              "value": "#00aea3"
+              "value": this.particleColor
             },
             "shape": {
               "type": "circle",
               "stroke": {
                 "width": 0,
-                "color": "#00aea3"
+                "color": this.particleColor
               },
               "polygon": {
                 "nb_sides": 5
@@ -116,7 +116,7 @@ Custom property | Description | Default
             "line_linked": {
               "enable": true,
               "distance": 150,
-              "color": "#105458",
+              "color": this.lineColor,
               "opacity": 0.4,
               "width": 1
             },
