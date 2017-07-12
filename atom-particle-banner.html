@@ -1,0 +1,59 @@
+<link rel="import" href="../polymer/polymer.html">
+<script src="../particles.js/particles.min.js"></script>
+
+<!--
+`atom-particle-banner`
+
+### Styling
+
+The following custom properties and mixins are also available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--atom-particle-banner-container` | Mixin applied to the particles container | `{}`
+`--atom-particle-banner-content` | Mixin applied to the particles content | `{}`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="atom-particle-banner">
+  <template>
+    <style>
+       :host {
+        display: block;
+        background-color: #21252e;
+      }
+
+       :host #particles-js {
+        height: 400px;
+        position: relative;
+      }
+
+       :host ::content #particles-js > h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @apply(--atom-particle-banner-content);
+      }
+    </style>
+    <div id="particles-js">
+      <content></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'atom-particle-banner',
+
+      attached: function () {
+        particlesJS.load('particles-js', '../particles.json', function () {
+          console.log('callback - particles.js config loaded');
+        });
+      }
+
+    });
+  </script>
+</dom-module>
