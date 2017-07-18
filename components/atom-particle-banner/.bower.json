@@ -12,11 +12,11 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   },
   "homepage": "https://github.com/makedatabetter-dev/atom-particle-banner",
-  "_release": "fda1cd79fd",
+  "_release": "62a6332a14",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "fda1cd79fd0fa141e5ff2ab492af7c36454a0d0e"
+    "commit": "62a6332a14d1a5f1f8a2d4cba87c8c94ce710d23"
   },
   "_source": "https://github.com/makedatabetter-dev/atom-particle-banner.git",
   "_target": "master",
