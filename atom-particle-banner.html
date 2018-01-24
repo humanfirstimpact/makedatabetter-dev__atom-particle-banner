@@ -21,7 +21,7 @@ Custom property | Description | Default
     <style>
        :host {
         display: block;
-        background-color: #21252e;
+        background-color: var(--atom-particle-background-color, #21252e);
         -moz-user-select: -moz-none;
         -khtml-user-select: none;
         -webkit-user-select: none;
@@ -32,6 +32,7 @@ Custom property | Description | Default
        :host #particles-js {
         height: 400px;
         position: relative;
+        @apply(--particle-js-container)
       }
 
        :host ::content #particles-js>* {
@@ -70,6 +71,12 @@ Custom property | Description | Default
       },
 
       attached: function () {
+        this.async(function () {
+          this._initializeParticles();
+        }.bind(this));
+      },
+
+      _initializeParticles: function(){
         particlesJS('particles-js', {
           "particles": {
             "number": {
