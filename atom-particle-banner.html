@@ -29,13 +29,13 @@ Custom property | Description | Default
         user-select: none;
       }
 
-       :host #particles-js {
+       :host div[id^='particles-js'] {
         height: 400px;
         position: relative;
         @apply(--particle-js-container)
       }
 
-       :host ::content #particles-js>* {
+       :host ::content div[id^='particles-js']>* {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -43,7 +43,7 @@ Custom property | Description | Default
         @apply(--atom-particle-banner-content);
       }
     </style>
-    <div id="particles-js">
+    <div id="particles-js[[_random]]">
       <content></content>
     </div>
   </template>
@@ -71,13 +71,14 @@ Custom property | Description | Default
       },
 
       attached: function () {
+        this._random = Math.round(Math.random() * 100);
         this.async(function () {
           this._initializeParticles();
         }.bind(this));
       },
 
       _initializeParticles: function(){
-        particlesJS('particles-js', {
+        particlesJS('particles-js' + this._random, {
           "particles": {
             "number": {
               "value": this.particleCount,
