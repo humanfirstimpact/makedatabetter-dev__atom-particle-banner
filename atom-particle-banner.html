@@ -43,7 +43,7 @@ Custom property | Description | Default
         @apply(--atom-particle-banner-content);
       }
     </style>
-    <div id="particles-js[[_random]]">
+    <div id="particles-js[[_instanceNumber]]">
       <content></content>
     </div>
   </template>
@@ -67,18 +67,26 @@ Custom property | Description | Default
         lineColor: {
           type: String,
           value: '#105458'
+        },
+
+        _sharedState: {
+          type: Object,
+          value: {
+            instanceCount : 0
+          }
         }
       },
 
       attached: function () {
-        this._random = Math.round(Math.random() * 100);
+        this._sharedState.instanceCount++;
+        this._instanceNumber = this._sharedState.instanceCount;
         this.async(function () {
           this._initializeParticles();
         }.bind(this));
       },
 
       _initializeParticles: function(){
-        particlesJS('particles-js' + this._random, {
+        particlesJS('particles-js' + this._instanceNumber, {
           "particles": {
             "number": {
               "value": this.particleCount,
