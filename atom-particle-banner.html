@@ -69,12 +69,23 @@ Custom property | Description | Default
           value: '#105458'
         },
 
+        disableInteraction: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: false,
+          observer: '_interactionCheck'
+        },
+
         _sharedState: {
           type: Object,
           value: {
             instanceCount : 0
           }
         }
+      },
+
+      _interactionCheck: function(value){
+        //debugger;
       },
 
       attached: function () {
@@ -86,6 +97,7 @@ Custom property | Description | Default
       },
 
       _initializeParticles: function(){
+        //debugger
         particlesJS('particles-js' + this._instanceNumber, {
           "particles": {
             "number": {
@@ -158,11 +170,11 @@ Custom property | Description | Default
             "detect_on": "canvas",
             "events": {
               "onhover": {
-                "enable": true,
+                "enable": !this.disableInteraction,
                 "mode": "repulse"
               },
               "onclick": {
-                "enable": true,
+                "enable": !this.disableInteraction,
                 "mode": "push"
               },
               "resize": true
